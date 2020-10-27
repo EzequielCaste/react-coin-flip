@@ -5,8 +5,15 @@ import "./styles.css";
 
 export default function CoinFlip() {
   const coins = [
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/S_Half_Dollar_Obverse_2016.jpg",
-    "https://i.imgur.com/QUgWetL.jpg"
+    {
+      side: "heads",
+      url:
+        "https://upload.wikimedia.org/wikipedia/commons/c/cd/S_Half_Dollar_Obverse_2016.jpg"
+    },
+    {
+      side: "tails",
+      url: "https://i.imgur.com/QUgWetL.jpg"
+    }
   ];
 
   const [side, setSide] = useState("");
@@ -25,17 +32,13 @@ export default function CoinFlip() {
     newFlip.flips = ++currentFlip.flips;
 
     const newSide = {
-      img: coins[rngCoin],
-      text: ""
+      img: coins[rngCoin].url,
+      text: coins[rngCoin].text
     };
 
-    if (newSide.img.includes("wiki")) {
-      newSide.text = "heads";
-      newFlip.heads = ++currentFlip.heads;
-    } else {
-      newSide.text = "tails";
-      newFlip.tails = ++currentFlip.tails;
-    }
+    newSide.img.includes("wiki")
+      ? (newFlip.heads = ++currentFlip.heads)
+      : (newFlip.tails = ++currentFlip.tails);
 
     setSide(newSide);
 
