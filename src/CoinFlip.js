@@ -1,4 +1,6 @@
 import React from "react";
+import CoinImage from "./CoinImage";
+import Message from "./Message";
 import "./styles.css";
 
 export default function CoinFlip() {
@@ -7,7 +9,8 @@ export default function CoinFlip() {
 
   return (
     <div className="coin-flip">
-      <img alt="coin" src={heads} />
+      <CoinImage coin={heads} />
+      <Message />
       <button>Flip!</button>
     </div>
   );
