@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Message({ heads, tails, flips }) {
   return (
-    <h1>
-      message: {heads} {flips}
-    </h1>
+    <p>
+      Out of {flips} flips, there wre {heads} heads and {tails} tails.
+    </p>
   );
 }

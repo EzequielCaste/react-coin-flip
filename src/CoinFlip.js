@@ -24,11 +24,18 @@ export default function CoinFlip() {
 
     newFlip.flips = ++currentFlip.flips;
 
-    const newSide = coins[rngCoin];
+    const newSide = {
+      img: coins[rngCoin],
+      text: ""
+    };
 
-    newSide.includes("wiki")
-      ? (newFlip.heads = ++currentFlip.heads)
-      : (newFlip.tails = ++currentFlip.tails);
+    if (newSide.img.includes("wiki")) {
+      newSide.text = "heads";
+      newFlip.heads = ++currentFlip.heads;
+    } else {
+      newSide.text = "tails";
+      newFlip.tails = ++currentFlip.tails;
+    }
 
     setSide(newSide);
 
@@ -37,7 +44,7 @@ export default function CoinFlip() {
 
   return (
     <div className="coin-flip">
-      {side && <CoinImage coin={side} />}
+      {side && <CoinImage {...side} />}
       <Message {...currentFlip} />
       <button onClick={flipCoin}>Flip!</button>
     </div>
