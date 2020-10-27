@@ -1,5 +1,9 @@
 import React from "react";
 
-export default function Message() {
-  return <h1>message</h1>;
+export default function Message({ heads, tails, flips }) {
+  return (
+    <h1>
+      message: {heads} {flips}
+    </h1>
+  );
 }
